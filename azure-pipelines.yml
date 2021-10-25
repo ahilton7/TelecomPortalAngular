@@ -15,12 +15,9 @@ steps:
     versionSpec: '14.18.0'
   displayName: 'Install Node.js'
 
-- task: Npm@1
-  inputs:
-    command: 'install'
-  
 
 - script: |
+    npm install uuid@7.0.3 --force
     npm install -g @angular/cli
     npm install
     ng build --prod
