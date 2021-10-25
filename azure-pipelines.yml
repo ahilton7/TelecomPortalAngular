@@ -9,6 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+- task: Npm@1
+  inputs:
+    command: 'install'
+
 steps:
 - task: NodeTool@0
   inputs:
