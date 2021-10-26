@@ -37,3 +37,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(bb022011-daf1-4a56-809e-e930ae46828a)'
+    appType: 'webApp'
+    WebAppName: 'TelecomProjectAPI20211020151612'
+    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
