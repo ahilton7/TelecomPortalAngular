@@ -29,14 +29,6 @@ steps:
     Contents: '**/$(Build.Configuration)/**/?(*.exe|*.dll|*.pbd)'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/telecom-angular/dist/telecom-angular'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
