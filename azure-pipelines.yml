@@ -23,28 +23,10 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/$(Build.Configuration)/**/?(*.exe|*.dll|*.pbd)'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'telecome-angular'
-    publishLocation: 'pipeline'
-
-- task: DownloadPipelineArtifact@2
-  inputs:
-    buildType: 'current'
-    artifactName: 'telecom-angular'
-    targetPath: '$(Pipeline.Workspace)'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     appType: 'webApp'
     WebAppName: 'telecom-angular'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: 'dist/telecom-angular'
