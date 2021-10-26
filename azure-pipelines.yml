@@ -27,6 +27,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(2)(bb022011-daf1-4a56-809e-e930ae46828a)'
     appType: 'webApp'
     WebAppName: 'telecom-angular'
     packageForLinux: 'dist/telecom-angular'
