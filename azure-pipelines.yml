@@ -17,7 +17,7 @@ steps:
 
 
 - script: |
-    cd '$(System.DefaultWorkingDirectory)/TelecomPortalAngular'
+    cd '$(System.DefaultWorkingDirectory)/telecom-angular'
     npm install -g @angular/cli
     npm install
     ng build --prod
