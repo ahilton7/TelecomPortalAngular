@@ -47,7 +47,7 @@ steps:
 - task: DownloadPipelineArtifact@2
   inputs:
     buildType: 'current'
-    artifactName: 'TelecomProject'
+    artifactName: 'drop'
     targetPath: '$(Pipeline.Workspace)'
 
 - task: AzureRmWebAppDeployment@4
