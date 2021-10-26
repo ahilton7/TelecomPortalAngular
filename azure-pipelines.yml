@@ -54,6 +54,7 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(bb022011-daf1-4a56-809e-e930ae46828a)'
-    appType: 'webApp'
+    appType: 'webAppLinux'
     WebAppName: 'telecom-angular'
-    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|12-lts'
