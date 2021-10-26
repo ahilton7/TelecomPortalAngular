@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'windows-latest'
 
 steps:
 - task: NodeTool@0
@@ -17,23 +17,16 @@ steps:
 
 
 - script: |
-    cd '$(System.DefaultWorkingDirectory)/telecom-angular'
     npm install -g @angular/cli
     npm install
     ng build --prod
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/telecom-angular/dist/telecom-angular'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
+- task: AzureRmWebAppDeployment@4
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(2)(bb022011-daf1-4a56-809e-e930ae46828a)'
+    appType: 'webApp'
+    WebAppName: 'telecom-angular'
+    packageForLinux: 'dist/telecom-angular'
