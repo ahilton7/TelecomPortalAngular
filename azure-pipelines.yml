@@ -23,6 +23,12 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**/$(Build.Configuration)/**/?(*.exe|*.dll|*.pbd)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: ArchiveFiles@2
   displayName: 'Archive files'
   inputs:
@@ -38,6 +44,11 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    artifactName: 'TelecomProject'
+    targetPath: '$(Pipeline.Workspace)'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
