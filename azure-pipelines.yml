@@ -30,11 +30,11 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'telecom-angular'
-    publishLocation: 'Container'
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'telecome-angular'
+    publishLocation: 'pipeline'
 
 - task: DownloadPipelineArtifact@2
   inputs:
