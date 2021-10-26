@@ -7,12 +7,12 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: ubuntu-latest
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '14.18.0'
+    versionSpec: '14.x'
   displayName: 'Install Node.js'
 
 
@@ -26,7 +26,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(2)(bb022011-daf1-4a56-809e-e930ae46828a)'
+    azureSubscription: 'Azure subscription 1(bb022011-daf1-4a56-809e-e930ae46828a)'
     appType: 'webApp'
     WebAppName: 'telecom-angular'
     packageForLinux: 'dist/telecom-angular'
