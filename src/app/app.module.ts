@@ -8,6 +8,7 @@ import { AccountComponent } from './account/account.component';
 import { PlansComponent } from './plans/plans.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     AccountComponent,
     PlansComponent,
     PurchaseComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
