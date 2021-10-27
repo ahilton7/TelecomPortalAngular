@@ -15,7 +15,10 @@ export class LoginComponent implements OnInit {
   model: Login = { userId: "admin", password: "password"}
   message: string = "test";
   returnUrl: string = "test";
-  loginForm: FormBuilder | undefined;
+  loginForm: FormGroup = this.formBuilder.group({
+    userId: ['', Validators.required],
+    possword: ['', Validators.required]
+  });
 
   constructor(
     private formBuilder : FormBuilder,
@@ -34,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   get f() {return this.loginForm.controls;}
+ 
   login(){
     if(this.loginForm.invalid){
       return;
