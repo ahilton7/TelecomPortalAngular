@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    overflow-x: hidden;
+    background-color: #FAF9F6;
+}
+  
+  /* Links inside the navbar */
+  .navbar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px 8px;
+    width: 10%;
+    text-decoration: none;
+  }
+  
+  /* Change background on mouse-over */
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
