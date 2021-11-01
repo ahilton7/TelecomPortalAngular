@@ -3,7 +3,7 @@ body {
     overflow-x: hidden;
     background-color: #FAF9F6;
 }
-  
+
   /* Links inside the navbar */
   .navbar a {
     float: left;
@@ -20,3 +20,51 @@ body {
     color: black;
   }
 
+  /* thin gray seperation bar */
+  #seperation-strip{
+    width: 100%; 
+    height: 0px;
+    border-bottom: solid 1px lightgrey;
+}
+
+/*prevents lines under text inside cards */
+a {
+    color:inherit;
+    text-decoration: none;
+}
+
+/* title header for each page */
+div.bigTitle {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.footer {
+  border-top: solid 1px black;
+  background-color: black;
+  color: white;
+} 
+
+/* control width of card divs */
+.control-width { 
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 300px;
+    width: 20px;
+    display:inline-block;
+}
+
+/* actual card objects */
+.card{
+    color: Black;
+    box-shadow: 0 3px 10px 0 #aaa;
+    cursor: pointer;
+    height: 225px;
+    position: relative;
+    width: 240px;
+}
+
+/* Headers used inside cards */
+h1 {
+  text-align: center;
+}
