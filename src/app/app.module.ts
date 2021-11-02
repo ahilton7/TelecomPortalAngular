@@ -12,6 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Plan1Component } from './plan1/plan1.component';
+import { Plan2Component } from './plan2/plan2.component';
+import { Plan3Component } from './plan3/plan3.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     PlansComponent,
     PurchaseComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    Plan1Component,
+    Plan2Component,
+    Plan3Component
   ],
   imports: [
     BrowserModule,

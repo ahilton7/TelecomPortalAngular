@@ -24,7 +24,8 @@ body {
   #seperation-strip{
     width: 100%; 
     height: 0px;
-    border-bottom: solid 1px lightgrey;
+    border-top: solid 1px lightgrey;
+    margin-bottom: 75px;
 }
 
 /*prevents lines under text inside cards */
@@ -39,13 +40,14 @@ div.bigTitle {
     font-weight: bold;
 }
 
+/* footer @ bottom of page */
 .footer {
   border-top: solid 1px black;
   background-color: black;
   color: white;
 } 
 
-/* control width of card divs */
+/* control width of card divs on home/plans pages */
 .control-width { 
     margin-top: 20px;
     margin-left: 100px;
@@ -54,14 +56,46 @@ div.bigTitle {
     display:inline-block;
 }
 
-/* actual card objects */
+/* control width of card divs on individual card pages */
+.control-width-big { 
+  margin-left: 400px;
+  width: 20px;
+  display:inline-block;
+}
+
+/* cards used in home/plans pages*/
 .card{
-    color: Black;
+    color: white;
     box-shadow: 0 3px 10px 0 #aaa;
     cursor: pointer;
     height: 225px;
     position: relative;
     width: 240px;
+}
+
+/* cards used in individual plan pages */
+.card-big{
+  color: white;
+  box-shadow: 0 3px 10px 0 #aaa;
+  height: 500px;
+  position: relative;
+  width: 500px;
+  align-content: center;
+  text-align: center;
+}
+
+/* Images used for cards in home/plans pages */
+.card-img-top {
+  width: 100%;
+  height: 23vw;
+  object-fit: cover;
+}
+
+/* Images used for cards in individual plan pages */
+.card-img-bottom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Headers used inside cards */
