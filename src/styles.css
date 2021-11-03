@@ -2,6 +2,9 @@
 body {
     overflow-x: hidden;
     background-color: #FAF9F6;
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear:both
 }
 
   /* Links inside the navbar */

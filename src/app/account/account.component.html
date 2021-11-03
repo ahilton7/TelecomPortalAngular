@@ -1,16 +1,44 @@
-<p>account works!</p>
+<div style="text-align:center" class="bigTitle" *ngIf="person">
+    {{ person.name }}
+</div>
 
-<table id="person-list" class="table table-hover table-bordered table-striped">
+<div id="seperation-strip"></div>
+
+<table id="plans-list" class="table table-hover table-bordered table-striped">
     <thead>
+        <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
+            <td colspan="4">Current Plans</td>
+        </tr>
         <tr>
-            <td>Name</td>
-            <td>Password</td>
+            <td>Plan</td>
+            <td>Cost</td>
+            <td>Device Limit</td>
+            <td>Devices</td>
         </tr>
     </thead>
-    <tbody id="person-list-body">
-        <tr *ngFor="let person of PersonList">
+    <tbody id="plan-list-body">
+        <tr *ngIf="person">
             <td>{{ person.name }}</td>
             <td>{{ person.password }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.password }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table id="devices-list" class="table table-hover table-bordered table-striped">
+    <thead>
+        <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
+            <td colspan="4">Current Devices</td>
+        </tr>
+        <tr>
+            <td>Company</td>
+            <td>Phone Number</td>
+        </tr>
+    </thead>
+    <tbody id="device-list-body">
+        <tr *ngIf="person">
+            <td>{{ person.name }}</td>
         </tr>
     </tbody>
 </table>

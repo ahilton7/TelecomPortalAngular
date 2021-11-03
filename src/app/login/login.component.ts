@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../interfaces/login';
 import { AuthService } from '../services/auth.service';
+import { Person } from '../models/person.model';
+import { PersonService } from '../services/person.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  PersonList: Person[] = [];
   model: Login = { userId: "admin", password: "password"}
   message: string = "test";
   returnUrl: string = "test";
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
+    private personService: PersonService,
     private formBuilder : FormBuilder,
     private router : Router,
     private authService : AuthService
@@ -34,6 +38,17 @@ export class LoginComponent implements OnInit {
     });
     this.returnUrl = '/dashboard';
     this.authService.logout();
+    this.personService.findAll().subscribe(data => {
+        this.PersonList = data;
+    });
+  }
+
+  details(person: Person): void {
+    let route = this.router.config.find(r => r.path === 'account/:id');
+    if (route) {
+      route.data = person;
+      this.router.navigateByUrl(`/account/${person.id}`);
+    }
   }
 
   get f() {return this.loginForm.controls;}
