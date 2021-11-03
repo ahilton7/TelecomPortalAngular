@@ -37,8 +37,9 @@
         </tr>
     </thead>
     <tbody id="device-list-body">
-        <tr *ngIf="person">
-            <td>{{ person.name }}</td>
+        <tr *ngFor="let device of DeviceList">
+            <td>{{ device.phone_type }}</td>
+            <td>{{ device.phone_number }}</td>
         </tr>
     </tbody>
 </table>
