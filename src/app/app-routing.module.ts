@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'plans', component: PlansComponent
   },
   {
-    path: 'account/:id', component: AccountComponent
+    path: 'account/:name', component: AccountComponent
   },
   {
     path: 'home', component: HomeComponent

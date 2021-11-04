@@ -17,10 +17,5 @@ export class DashboardComponent implements OnInit {
     this.id = localStorage.getItem('token');
   }
 
-  logout(){
-    console.log('logout');
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 
 }
