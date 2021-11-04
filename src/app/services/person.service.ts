@@ -16,8 +16,8 @@ export class PersonService {
     return this.httpClient.get<Person[]>(this.url);
   }
 
-  find(person: Person): Observable<Person> {
-    return this.httpClient.get<Person>(this.url + `/${person.id}`);
+  find(personId: any): Observable<Person> {
+    return this.httpClient.get<Person>(this.url + `/${personId.id}`);
   }
 
   save(person: Person): Observable<number> {
