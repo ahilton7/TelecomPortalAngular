@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   PersonList: Person[] = [];
   message: string = "test";
   returnUrl: string = "account/:";
-  response: Response = new Response("","", 0);
+  response: Response = new Response("", "", new Person("", ""));
   loginForm: FormGroup = this.formBuilder.group({
     userId: ['', Validators.required],
     password: ['', Validators.required]
@@ -59,17 +59,14 @@ export class LoginComponent implements OnInit {
     this.authService.getResponse(this.userLogin).subscribe((data) =>{
       this.response.status = data.status;
       this.response.message = data.message;
+      this.response.person = data.person;
     },
       error => console.log(error)
     )
     if(this.response.status == "1"){
-      let route = this.router.config.find(r => r.path === 'account/:name');
-      if (route) {
-        route.data = this.personService.find(this.response.userId);
-        this.router.navigateByUrl(`/account/${this.response.message}`);
-      } 
+      this.details(this.response.person);
     } else{
-      this.message = "wrong username or password";
+      
     }
   }
 }

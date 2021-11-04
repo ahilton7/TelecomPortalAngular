@@ -1,13 +1,12 @@
-
+import { Person } from "./person.model";
 
 export class Response {
     status : string;
     message : string;
-    userId : any;
-    constructor(status : string, message : string, userId : any){
+    person : Person;
+    constructor(status : string, message : string, person : Person){
         this.status = status;
         this.message = message;
-        this.userId = userId;
-
+        this.person = person;
     }
 }
