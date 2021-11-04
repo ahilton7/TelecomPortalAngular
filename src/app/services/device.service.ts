@@ -12,8 +12,8 @@ export class DeviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findAll(): Observable<Device[]> {
-    return this.httpClient.get<Device[]>(this.url);
+  findAll(personId: Number): Observable<Device[]> {
+    return this.httpClient.get<Device[]>(this.url + "?personId=" + personId);
   }
 
   find(device: Device): Observable<Device> {

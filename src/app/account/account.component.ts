@@ -25,10 +25,14 @@ export class AccountComponent implements OnInit {
             this.person = data;
         });
     });
-    this.activeRoute.data.subscribe(data => {
-        this.deviceService.findAll().subscribe(data => {
-            this.DeviceList = data;
-        });
+  }
+
+  updateDevice(): void {
+    this.activeRoute.data.subscribe(id => {
+      this.personId = id;
+      this.deviceService.findAll(this.personId.id).subscribe(data => {
+          this.DeviceList = data;
+      });
     });
   }
 }

@@ -7,21 +7,21 @@
 <table id="plans-list" class="table table-hover table-bordered table-striped">
     <thead>
         <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
-            <td colspan="4">Current Plans</td>
+            <td colspan="5">Current Plans</td>
         </tr>
         <tr>
-            <td>Plan</td>
-            <td>Cost</td>
+            <td>Plan id</td>
+            <td>Plan Name</td>
             <td>Device Limit</td>
-            <td>Devices</td>
+            <td>Cost</td>
         </tr>
     </thead>
     <tbody id="plan-list-body">
-        <tr *ngIf="person">
-            <td>{{ person.name }}</td>
-            <td>{{ person.password }}</td>
-            <td>{{ person.name }}</td>
-            <td>{{ person.password }}</td>
+        <tr *ngFor="let device of DeviceList">
+            <td>{{ device.phone_type }}</td>
+            <td>{{ device.phone_number }}</td>
+            <td>{{ device.planId }}</td>
+            <td>{{ device.planId }}</td>
         </tr>
     </tbody>
 </table>
@@ -29,17 +29,19 @@
 <table id="devices-list" class="table table-hover table-bordered table-striped">
     <thead>
         <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
-            <td colspan="4">Current Devices</td>
+            <td colspan="4">Current Devices<button style="float: left" class="btn btn-primary" (click)="updateDevice()">View Devices</button></td>
         </tr>
         <tr>
             <td>Company</td>
             <td>Phone Number</td>
+            <td>Associated Plan</td>
         </tr>
     </thead>
     <tbody id="device-list-body">
         <tr *ngFor="let device of DeviceList">
             <td>{{ device.phone_type }}</td>
             <td>{{ device.phone_number }}</td>
+            <td>{{ device.planId }}</td>
         </tr>
     </tbody>
 </table>
