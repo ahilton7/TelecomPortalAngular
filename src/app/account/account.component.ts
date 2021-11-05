@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit {
   row: any;
   personId: any;
   person!: Person;
-  device!: Device;
+  device: Device = new Device("",0,0,0);
   plan!: Plan;
   DeviceList: Device[] = [];
   PlanList: Plan[] = [];
@@ -77,7 +77,8 @@ export class AccountComponent implements OnInit {
   }
 
   addDevice(): void {
-    this.device = new Device("Samsung", 123456478, 1, 3)
+    //this.device = new Device("Samsung", 123456478, 1, 3)
+    this.device.personId = 1;
     this.deviceService.save(this.device).subscribe(data => {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
@@ -89,13 +90,12 @@ export class AccountComponent implements OnInit {
   }
 
 
-
   addEmptyrow(): void {
     this.table = document.getElementById('devices-list');
     this.row = this.table.insertRow(2);
-    this.row.insertCell(0).innerHTML+='<input type="text">';
-    this.row.insertCell(1).innerHTML+='<input type="text">';
-    this.row.insertCell(2).innerHTML+='<input type="text">';
+    this.row.insertCell(0).innerHTML+='<input [(ngModel)] = "device.phone_type" #phone_type = "ngModel" type="text">';
+    this.row.insertCell(1).innerHTML+='<input [(ngModel)] = "device.phone_number" #phone_number = "ngModel" type="number">';
+    this.row.insertCell(2).innerHTML+='<input [(ngModel)] = "device.planId" #planId = "ngModel" type="number">';
     document.getElementById('addButton')!.innerText = 'Save';
   }
 
