@@ -77,8 +77,12 @@ export class AccountComponent implements OnInit {
   }
 
   addDevice(): void {
+<<<<<<< HEAD
     //this.device = new Device("Samsung", 123456478, 1, 3)
     this.device.personId = 1;
+=======
+    this.device = new Device("Samsung", 123452278, 1, 3)
+>>>>>>> 860187a5205c4e2cea3c416a73aa4cf9393106ea
     this.deviceService.save(this.device).subscribe(data => {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
@@ -86,6 +90,8 @@ export class AccountComponent implements OnInit {
         this.router.navigateByUrl('/devices');
       }
     });
+    this.table = document.getElementById('devices-list');
+    this.row = this.table.deleteRow(2);
     document.getElementById('addButton')!.innerText = 'Add Device';
   }
 
