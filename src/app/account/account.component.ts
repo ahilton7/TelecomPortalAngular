@@ -23,7 +23,7 @@ export class AccountComponent implements OnInit {
   row: any;
   personId: any;
   person!: Person;
-  device!: Device;
+  device: Device = new Device("",0,0,0);
   plan!: Plan;
   DeviceList: Device[] = [];
   PlanList: Plan[] = [];
@@ -80,11 +80,13 @@ export class AccountComponent implements OnInit {
   }
 
   addDevice(): void {
+
     this.table = document.getElementById('devices-list');
     this.x = (<HTMLInputElement>document.getElementById('random1'))!.value;
     this.y = (<HTMLInputElement>document.getElementById('random2'))!.value;
     this.z = (<HTMLInputElement>document.getElementById('random3'))!.value;
     this.device = new Device(this.x, this.y, this.personId.id, this.z)
+    //this.device = new Device("Samsung", 123456478, 1, 3)
     this.deviceService.save(this.device).subscribe(data => {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
@@ -96,7 +98,6 @@ export class AccountComponent implements OnInit {
     this.row = this.table.deleteRow(2);
     document.getElementById('addButton')!.innerText = 'Add Device';
   }
-
 
 
   addEmptyrow(): void {
