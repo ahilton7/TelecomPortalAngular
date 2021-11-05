@@ -7,7 +7,7 @@
 <table id="plans-list" class="table table-hover table-bordered table-striped">
     <thead>
         <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
-            <td colspan="5">Current Plans</td>
+            <td colspan="5"><button style="float: left" class="btn btn-primary" (click)="updatePlans()">View Plans</button>Current Plans</td>
         </tr>
         <tr>
             <td>Plan id</td>
@@ -17,11 +17,11 @@
         </tr>
     </thead>
     <tbody id="plan-list-body">
-        <tr *ngFor="let device of DeviceList">
-            <td>{{ device.phone_type }}</td>
-            <td>{{ device.phone_number }}</td>
-            <td>{{ device.planId }}</td>
-            <td>{{ device.planId }}</td>
+        <tr *ngFor="let plan of PlanList">
+            <td>{{ plan.id }}</td>
+            <td>{{ plan.name }}</td>
+            <td>{{ plan.device_limit }}</td>
+            <td>{{ plan.cost }}</td>
         </tr>
     </tbody>
 </table>
@@ -29,7 +29,7 @@
 <table id="devices-list" class="table table-hover table-bordered table-striped">
     <thead>
         <tr style="font-weight: bolder; font-size: x-large; text-align: center;">
-            <td colspan="4">Current Devices<button style="float: left" class="btn btn-primary" (click)="updateDevice()">View Devices</button></td>
+            <td colspan="4"><button style="float: left" class="btn btn-primary" (click)="updateDevice()">View Devices</button>Current Devices<button id="addButton" style="float: right" class="btn btn-primary" (click)="addSwitch()">Add Device</button></td>
         </tr>
         <tr>
             <td>Company</td>
@@ -41,7 +41,7 @@
         <tr *ngFor="let device of DeviceList">
             <td>{{ device.phone_type }}</td>
             <td>{{ device.phone_number }}</td>
-            <td>{{ device.planId }}</td>
+            <td>{{ device.planId }} <button style="float: right" class="btn btn-primary" (click)="deleteDevice(device)">Delete</button></td>
         </tr>
     </tbody>
 </table>
