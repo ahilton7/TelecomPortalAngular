@@ -119,7 +119,7 @@ export class AccountComponent implements OnInit {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
       if (route) {
-        this.router.navigateByUrl('/plans');
+        this.router.navigateByUrl('/devices');
       }
     });
     this.table = document.getElementById('plans-list');
