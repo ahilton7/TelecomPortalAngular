@@ -16,6 +16,9 @@ export class AccountComponent implements OnInit {
 
   totalCost: number = 0;
   switch: Boolean = true;
+  x!: any;
+  y!: any;
+  z!: any;
   table: any;
   row: any;
   personId: any;
@@ -77,7 +80,11 @@ export class AccountComponent implements OnInit {
   }
 
   addDevice(): void {
-    this.device = new Device("Samsung", 123452278, 1, 3)
+    this.table = document.getElementById('devices-list');
+    this.x = (<HTMLInputElement>document.getElementById('random1'))!.value;
+    this.y = (<HTMLInputElement>document.getElementById('random2'))!.value;
+    this.z = (<HTMLInputElement>document.getElementById('random3'))!.value;
+    this.device = new Device(this.x, this.y, this.personId.id, this.z)
     this.deviceService.save(this.device).subscribe(data => {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
@@ -95,9 +102,9 @@ export class AccountComponent implements OnInit {
   addEmptyrow(): void {
     this.table = document.getElementById('devices-list');
     this.row = this.table.insertRow(2);
-    this.row.insertCell(0).innerHTML+='<input type="text">';
-    this.row.insertCell(1).innerHTML+='<input type="text">';
-    this.row.insertCell(2).innerHTML+='<input type="text">';
+    this.row.insertCell(0).innerHTML+='<input id="random1" type="text">';
+    this.row.insertCell(1).innerHTML+='<input id="random2" type="text">';
+    this.row.insertCell(2).innerHTML+='<input id="random3" type="text">';
     document.getElementById('addButton')!.innerText = 'Save';
   }
 
