@@ -20,8 +20,8 @@ export class DeviceService {
     return this.httpClient.get<Device>(this.url + `/${device.id}`);
   }
 
-  save(device: Device): Observable<Device> {
-    return this.httpClient.post<Device>(this.url, device);
+  save(device: Device): Observable<number> {
+    return this.httpClient.post<number>(this.url, device);
   }
 
   delete(deviceId: Number): Observable<Device> {

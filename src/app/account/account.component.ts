@@ -14,6 +14,7 @@ import { PlanService } from '../services/plan.service';
 })
 export class AccountComponent implements OnInit {
 
+  totalCost: number = 0;
   switch: Boolean = true;
   table: any;
   row: any;
@@ -57,6 +58,10 @@ export class AccountComponent implements OnInit {
       this.personId = id;
       this.planService.findAll(this.personId.id).subscribe(data => {
           this.PlanList = data;
+          this.totalCost = 0;
+          this.PlanList.forEach(element =>
+              this.totalCost = this.totalCost + element.cost
+            )
       });
     });
   }
@@ -66,11 +71,13 @@ export class AccountComponent implements OnInit {
       this.personId = id;
       this.device = new Device("Apple", 2223335555, this.personId.id, 1);
       this.deviceService.save(this.device).subscribe(data => {
-          this.device = data;
+          this.device.id = data;
       });
     });
     document.getElementById('addButton')!.innerText = 'Add Device';
   }
+
+
 
   addEmptyrow(): void {
     this.table = document.getElementById('devices-list');
@@ -86,4 +93,5 @@ export class AccountComponent implements OnInit {
     else this.addDevice();
     this.switch = !this.switch;
   }
+
 }
