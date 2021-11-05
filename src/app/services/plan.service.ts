@@ -23,4 +23,8 @@ export class PlanService {
   save(plan: Plan): Observable<number> {
     return this.httpClient.post<number>(this.url, plan);
   }
+
+  delete(planId: Number): Observable<Plan> {
+    return this.httpClient.delete<Plan>(this.url + "/" + planId)
+  }
 }

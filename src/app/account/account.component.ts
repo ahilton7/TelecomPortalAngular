@@ -21,6 +21,7 @@ export class AccountComponent implements OnInit {
   personId: any;
   person!: Person;
   device!: Device;
+  plan!: Plan;
   DeviceList: Device[] = [];
   PlanList: Plan[] = [];
 
@@ -49,6 +50,15 @@ export class AccountComponent implements OnInit {
       this.device = device;
       this.deviceService.delete(this.device.id).subscribe(data => {
         this.device = data;
+      });
+    });
+  }
+
+  deletePlan(plan: Plan): void {
+    this.activeRoute.data.subscribe(id => {
+      this.plan = plan;
+      this.planService.delete(this.plan.id).subscribe(data => {
+        this.plan = data;
       });
     });
   }

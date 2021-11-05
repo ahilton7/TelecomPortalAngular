@@ -14,6 +14,7 @@
             <td>Plan Name</td>
             <td>Device Limit</td>
             <td>Cost</td>
+            <td></td>
         </tr>
     </thead>
     <tbody id="plan-list-body">
@@ -22,6 +23,7 @@
             <td>{{ plan.name }}</td>
             <td>{{ plan.device_limit }}</td>
             <td>{{ plan.cost }}</td>
+            <td><button style="float: none;" class="btn btn-primary" (click)="deletePlan(plan)">Delete</button></td>
         </tr>
         <tr>
             <td colspan="4" style="float: left;">Total Cost: {{ totalCost }}</td>
