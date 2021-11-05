@@ -16,6 +16,7 @@ export class AccountComponent implements OnInit {
 
   totalCost: number = 0;
   switch: Boolean = true;
+  switch2: Boolean = true;
   x!: any;
   y!: any;
   z!: any;
@@ -86,7 +87,6 @@ export class AccountComponent implements OnInit {
     this.y = (<HTMLInputElement>document.getElementById('random2'))!.value;
     this.z = (<HTMLInputElement>document.getElementById('random3'))!.value;
     this.device = new Device(this.x, this.y, this.personId.id, this.z)
-    //this.device = new Device("Samsung", 123456478, 1, 3)
     this.deviceService.save(this.device).subscribe(data => {
 
       let route = this.router.config.find(r => r.path === 'account/:name');
@@ -99,6 +99,34 @@ export class AccountComponent implements OnInit {
     document.getElementById('addButton')!.innerText = 'Add Device';
   }
 
+  addPlan(): void {
+
+    this.table = document.getElementById('plans-list');
+    this.x = (<HTMLInputElement>document.getElementById('random4'))!.value;
+    if (this.x == "PlanOne")
+    {
+      this.plan = new Plan(3, 14.99, 'PlanOne', this.personId.id)
+    }
+    if (this.x == "PlanTwo")
+    {
+      this.plan = new Plan(5, 19.99, 'PlanTwo', this.personId.id)
+    }
+    if (this.x == "PlanThree")
+    {
+      this.plan = new Plan(7, 29.99, 'PlanThree', this.personId.id)
+    }
+    this.planService.save(this.plan).subscribe(data => {
+
+      let route = this.router.config.find(r => r.path === 'account/:name');
+      if (route) {
+        this.router.navigateByUrl('/plans');
+      }
+    });
+    this.table = document.getElementById('plans-list');
+    this.row = this.table.deleteRow(2);
+    document.getElementById('addButton2')!.innerText = 'Add Plan';
+  }
+
 
   addEmptyrow(): void {
     this.table = document.getElementById('devices-list');
@@ -109,10 +137,27 @@ export class AccountComponent implements OnInit {
     document.getElementById('addButton')!.innerText = 'Save';
   }
 
+  addEmptyrow2(): void {
+    this.table = document.getElementById('plans-list');
+    this.row = this.table.insertRow(2);
+    this.row.insertCell(0).innerHTML+='';
+    this.row.insertCell(1).innerHTML+='<input id="random4" type="text">';
+    this.row.insertCell(2).innerHTML+='';
+    this.row.insertCell(3).innerHTML+='';
+    this.row.insertCell(4).innerHTML+='';
+    document.getElementById('addButton2')!.innerText = 'Save';
+  }
+
   addSwitch(): void {
     if(this.switch) this.addEmptyrow();
     else this.addDevice();
     this.switch = !this.switch;
+  }
+
+  addSwitch2(): void {
+    if(this.switch2) this.addEmptyrow2();
+    else this.addPlan();
+    this.switch2 = !this.switch2;
   }
 
 }
