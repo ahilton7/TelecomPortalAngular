@@ -77,12 +77,13 @@ export class AccountComponent implements OnInit {
   }
 
   addDevice(): void {
-    this.activeRoute.data.subscribe(id => {
-      this.personId = id;
-      this.device = new Device("Apple", 2223335555, this.personId.id, 1);
-      this.deviceService.save(this.device).subscribe(data => {
-          this.device.id = data;
-      });
+    this.device = new Device("Samsung", 123456478, 1, 3)
+    this.deviceService.save(this.device).subscribe(data => {
+
+      let route = this.router.config.find(r => r.path === 'account/:name');
+      if (route) {
+        this.router.navigateByUrl('/devices');
+      }
     });
     document.getElementById('addButton')!.innerText = 'Add Device';
   }
